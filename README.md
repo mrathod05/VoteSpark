@@ -1,10 +1,11 @@
+
 # 🗳️ VoteSpark - Decentralized Polling Platform
 
 ## Overview
 
 VoteSpark is a cutting-edge decentralized polling platform built on the Solana blockchain, enabling transparent, secure, and verifiable voting experiences.
 
-![VoteSpark Banner](/public/vote_spark_og.webp)
+![VoteSpark Banner](/public/vote_spark_hero.webp)
 
 ## 🚀 Features
 
@@ -29,6 +30,8 @@ VoteSpark is a cutting-edge decentralized polling platform built on the Solana b
 - `@solana/web3.js`
 
 - `@project-serum/anchor`
+
+- `@coral-xyz/anchor`
 
 - **Wallet Adapters**: `@solana/wallet-adapter-react`
 
@@ -79,8 +82,8 @@ solana  config  set  --url  devnet
 4. Deploy Smart Contract
 
 ```bash
-anchor  build
-anchor  deploy
+yarn anchor-build
+yarn anchor-deploy devnet
 ```
 
 5 Run the development server
@@ -111,13 +114,13 @@ NEXT_PUBLIC_RPC_ENDPOINT=https://api.devnet.solana.com
 ### Solana Deployment
 
 ```bash
-anchor  build
-anchor  deploy  --provider.cluster  devnet
+yarn anchor-build
+yarn anchor-deploy devnet
 ```
 
 ## 🔒 Smart Contract
 
-- Location: `/programs/votespark`
+- Location: `/programs/vote_spark`
 
 - Primary Functions:
 
@@ -160,7 +163,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 ## 🧑‍💻 Developer
-
-**Made with ❤️ by the MeetRathod**
-Developer: ![VoteSpark Banner](public/developer.jpg)
-🔗 Contact Me: [https://meetrathoddeveloper.netlify.app/contact]
+<img src="public/developer.jpg" alt="developer-logo" style="width:100px;hight:100px;"/>
+<b>Meet Rathod</b><br/>
+<a href="https://meetrathoddeveloper.netlify.app/contact" target="_blank">📞 Contact Me</a>
