@@ -44,7 +44,7 @@ export const METADATA = {
     siteName: `${app.name}`,
     images: [
       {
-        url: "/vote_spark_og.webp",
+        url: "/vote_spark_hero.webp",
         width: 1200,
         height: 630,
         alt: `${app.name} - Decentralized Polling Platform`,
@@ -58,7 +58,7 @@ export const METADATA = {
     title: `${app.name} - Decentralized Polling Platform`,
     description:
       "Create and vote on secure, transparent polls powered by Solana blockchain",
-    images: ["/vote_spark_twitter.webp"],
+    images: ["/vote_spark_hero.webp"],
   },
   robots: {
     index: true,
