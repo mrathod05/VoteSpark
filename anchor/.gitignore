@@ -5,12 +5,9 @@ target/deploy
 target/release
 target/sbf-solana-solana
 target/test-ledger
+target/sbpf-solana-solana
 target/.rustc_info.json
 **/*.rs.bk
 node_modules
 test-ledger
 .yarn
-
-target
-!target/idl/
-!target/idl/vote_spark.json

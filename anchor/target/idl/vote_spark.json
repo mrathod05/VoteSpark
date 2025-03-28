@@ -1,0 +1,239 @@
+{
+  "address": "BBU4VxxYCUHRBDEuVSGjpmz7G3q3HdE2rdaitFYWs47W",
+
+  "metadata": {
+    "name": "vote_spark",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize_poll",
+      "discriminator": [193, 22, 99, 197, 18, 33, 115, 117],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "poll_id",
+          "type": "u8"
+        },
+        {
+          "name": "end_time",
+          "type": "i64"
+        },
+        {
+          "name": "created_at",
+          "type": "i64"
+        },
+        {
+          "name": "options",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "OptionItem"
+              }
+            }
+          }
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "remove_poll",
+      "discriminator": [127, 237, 78, 34, 55, 84, 172, 225],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "poll_id",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "vote_poll",
+      "discriminator": [154, 219, 48, 148, 149, 7, 153, 194],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "vote",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_poll_id",
+          "type": "u8"
+        },
+        {
+          "name": "option_index",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Poll",
+      "discriminator": [110, 234, 167, 188, 231, 136, 153, 111]
+    },
+    {
+      "name": "Vote",
+      "discriminator": [96, 91, 104, 57, 145, 35, 172, 155]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidOption",
+      "msg": "Invalid Option Index"
+    },
+    {
+      "code": 6001,
+      "name": "PollExpired",
+      "msg": "Poll Has Expired"
+    },
+    {
+      "code": 6002,
+      "name": "TitleTooShort",
+      "msg": "Poll Title Too Short"
+    },
+    {
+      "code": 6003,
+      "name": "TitleTooLong",
+      "msg": "Poll Title Too Long"
+    },
+    {
+      "code": 6004,
+      "name": "TooManyOptions",
+      "msg": "Too Many Poll Options"
+    },
+    {
+      "code": 6005,
+      "name": "DuplicateVote",
+      "msg": "Duplicate Vote Detected"
+    }
+  ],
+  "types": [
+    {
+      "name": "OptionItem",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u8"
+          },
+          {
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Poll",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "poll_id",
+            "type": "u8"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "options",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "OptionItem"
+                }
+              }
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vote",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "poll_id",
+            "type": "u8"
+          },
+          {
+            "name": "option_index",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
