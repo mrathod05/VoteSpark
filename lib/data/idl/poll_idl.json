@@ -1,0 +1,91 @@
+{
+  "version": "0.1.0",
+  "name": "vote_spark",
+  "instructions": [
+    {
+      "name": "initializePoll",
+      "accounts": [
+        { "name": "creator", "isMut": true, "isSigner": true },
+        { "name": "poll", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "pollId", "type": "u8" },
+        { "name": "endTime", "type": "i64" },
+        { "name": "createdAt", "type": "i64" },
+        { "name": "options", "type": { "vec": { "defined": "OptionItem" } } },
+        { "name": "title", "type": "string" }
+      ]
+    },
+    {
+      "name": "removePoll",
+      "accounts": [
+        { "name": "creator", "isMut": true, "isSigner": true },
+        { "name": "poll", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "pollId", "type": "u8" }]
+    },
+    {
+      "name": "votePoll",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "poll", "isMut": true, "isSigner": false },
+        { "name": "vote", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "pollId", "type": "u8" },
+        { "name": "optionIndex", "type": "u8" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Poll",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "creator", "type": "publicKey" },
+          { "name": "pollId", "type": "u8" },
+          { "name": "title", "type": "string" },
+          { "name": "options", "type": { "vec": { "defined": "OptionItem" } } },
+          { "name": "createdAt", "type": "i64" },
+          { "name": "endTime", "type": "i64" }
+        ]
+      }
+    },
+    {
+      "name": "Vote",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "user", "type": "publicKey" },
+          { "name": "pollId", "type": "u8" },
+          { "name": "optionIndex", "type": "u8" }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "OptionItem",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "id", "type": "u8" },
+          { "name": "label", "type": "string" },
+          { "name": "value", "type": "u64" }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "InvalidOption", "msg": "Invalid Option Index" },
+    { "code": 6001, "name": "PollExpired", "msg": "Poll Has Expired" },
+    { "code": 6002, "name": "TitleTooShort", "msg": "Poll Title Too Short" },
+    { "code": 6003, "name": "TitleTooLong", "msg": "Poll Title Too Long" },
+    { "code": 6004, "name": "TooManyOptions", "msg": "Too Many Poll Options" },
+    { "code": 6005, "name": "DuplicateVote", "msg": "Duplicate Vote Detected" }
+  ]
+}

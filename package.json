@@ -1,0 +1,43 @@
+{
+  "name": "votespark",
+  "author": "Meet Rathod",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "anchor": "cd anchor && anchor",
+    "anchor-build": "cd anchor && anchor build",
+    "anchor-deploy": "cd anchor && anchor deploy --provider.cluster",
+    "anchor-localnet": "cd anchor && anchor localnet",
+    "anchor-test": "cd anchor && anchor test",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.31.0",
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/wallet-adapter-base": "^0.9.24",
+    "@solana/wallet-adapter-phantom": "^0.9.25",
+    "@solana/wallet-adapter-react-ui": "^0.9.36",
+    "@solana/web3.js": "^1.98.0",
+    "crypto-browserify": "^3.12.1",
+    "framer-motion": "^12.6.0",
+    "next": "15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
